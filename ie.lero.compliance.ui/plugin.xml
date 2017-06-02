@@ -72,5 +72,105 @@
             name="Compliance">
       </perspective>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="ie.lero.compliance.ui.commands.compliance"
+            name="Compliance Category">
+      </category>
+      <command
+            categoryId="ie.lero.compliance.ui.commands.compliance"
+            defaultHandler="ie.lero.compliance.ui.handlers.ComplianceCheckingHandler"
+            id="ie.lero.compliance.ui.commands.complianceChecking"
+            name="Compliance checking">
+      </command>
+      <command
+            categoryId="ie.lero.compliance.ui.commands.compliance"
+            defaultHandler="ie.lero.compliance.ui.handlers.ComplianceExplanationsHandler"
+            id="ie.lero.compliance.ui.commands.complianceExplanations"
+            name="Non-compliance explanations">
+      </command>
+      <command
+            categoryId="ie.lero.compliance.ui.commands.compliance"
+            defaultHandler="ie.lero.compliance.ui.handlers.ControlDerivationHandler"
+            id="ie.lero.compliance.ui.commands.controlsDerivation"
+            name="Compliance controls derivation">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="ie.lero.compliance.ui.handlers.ComplianceCheckingHandler"
+            commandId="ie.lero.compliance.ui.commands.complianceChecking">
+      </handler>
+      <handler
+            class="ie.lero.compliance.ui.handlers.ComplianceExplanationsHandler"
+            commandId="ie.lero.compliance.ui.commands.complianceExplanations">
+      </handler>
+      <handler
+            class="ie.lero.compliance.ui.handlers.ControlDerivationHandler"
+            commandId="ie.lero.compliance.ui.commands.controlsDerivation">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="ie.lero.compliance.ui.commands.complianceChecking"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="ie.lero.compliance.ui.menus.complianceMenu"
+               label="Compliance Menu"
+               mnemonic="M">
+            <command
+                  commandId="ie.lero.compliance.ui.commands.complianceChecking"
+                  id="ie.lero.compliance.ui.menus.complianceChecking"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="ie.lero.compliance.ui.commands.complianceExplanations"
+                  id="ie.lero.compliance.ui.menus.complianceExplanations"
+                  mnemonic="T">
+            </command>
+            <command
+                  commandId="ie.lero.compliance.ui.commands.controlsDerivation"
+                  id="ie.lero.compliance.ui.menus.controlsDerivation"
+                  mnemonic="U">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="ie.lero.compliance.ui.toolbars.sampleToolbar"
+               label="Compliance toolbar">
+            <command
+                  commandId="ie.lero.compliance.ui.commands.complianceChecking"
+                  icon="icons/sample.gif"
+                  id="ie.lero.compliance.ui.toolbars.complianceChecking"
+                  tooltip="Say hello world">
+            </command>
+            <command
+                  commandId="ie.lero.compliance.ui.commands.complianceExplanations"
+                  icon="icons/sample.gif"
+                  id="ie.lero.compliance.ui.toolbars.complianceExplanations"
+                  tooltip="Say hello world">
+            </command>
+            <command
+                  commandId="ie.lero.compliance.ui.commands.controlsDerivation"
+                  icon="icons/sample.gif"
+                  id="ie.lero.compliance.ui.toolbars.controlsDerivation"
+                  tooltip="Say hello world">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
 
 </plugin>
