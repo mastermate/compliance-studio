@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Compiance"
+            id="ie.lero.compliance.ui">
+      </category>
+      <view
+            category="ie.lero.compliance.ui"
+            class="ie.lero.compliance.ui.views.ExplanationsView"
+            icon="icons/sample.gif"
+            id="ie.lero.compliance.ui.explanationsView"
+            name="Explanations"
+            restorable="true">
+      </view>
+      <view
+            category="ie.lero.compliance.ui"
+            class="ie.lero.compliance.ui.views.EnvironmentView"
+            id="ie.lero.compliance.ui.enviromentView"
+            name="Environment"
+            restorable="true">
+      </view>
+      <view
+            category="ie.lero.compliance.ui"
+            class="ie.lero.compliance.ui.views.ComplianceExplorerView"
+            id="ie.lero.compliance.ui.complianceExplorerView"
+            name="Compliance Explorer"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ie.lero.compliance.ui.perspectives.CompliancePerspective">
+         <view
+               id="ie.lero.compliance.ui.explanationsView"
+               ratio="0.5"
+               relationship="stack"
+               relative="ie.lero.compliance.ui.complianceExplorerView"
+               visible="true">
+         </view>
+         <view
+               id="ie.lero.compliance.ui.complianceExplorerView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView">
+         </view>
+         <view
+               id="ie.lero.compliance.ui.enviromentView"
+               minimized="false"
+               relationship="stack"
+               relative="ie.lero.compliance.ui.explanationsView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="ie.lero.compliance.ui.perspectives.CompliancePerspective"
+            icon="icons/releng_gears.gif"
+            id="ie.lero.compliance.ui.perspectives.CompliancePerspective"
+            name="Compliance">
+      </perspective>
+   </extension>
+
+</plugin>
