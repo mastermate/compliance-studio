@@ -153,24 +153,35 @@
                label="Compliance toolbar">
             <command
                   commandId="ie.lero.compliance.ui.commands.complianceChecking"
-                  icon="icons/sample.gif"
+                  icon="icons/checking.gif"
                   id="ie.lero.compliance.ui.toolbars.complianceChecking"
                   tooltip="Say hello world">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.complianceExplanations"
-                  icon="icons/sample.gif"
+                  icon="icons/icon_light_bulb.gif"
                   id="ie.lero.compliance.ui.toolbars.complianceExplanations"
                   tooltip="Say hello world">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.controlsDerivation"
-                  icon="icons/sample.gif"
+                  icon="icons/process.gif"
                   id="ie.lero.compliance.ui.toolbars.controlsDerivation"
                   tooltip="Say hello world">
             </command>
          </toolbar>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="ie.lero.compliance.ui.editors.ComplianceEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="xml"
+            icon="icons/sample.gif"
+            id="ie.lero.compliance.ui.editors.ComplianceEditor"
+            name="Compliance Editor">
+      </editor>
    </extension>
 
 </plugin>
