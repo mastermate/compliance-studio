@@ -5,13 +5,12 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="Compiance"
+            name="Compliance"
             id="ie.lero.compliance.ui">
       </category>
       <view
             category="ie.lero.compliance.ui"
-            class="ie.lero.compliance.ui.views.ExplanationsView"
-            icon="icons/sample.gif"
+            class="org.eclipse.ui.internal.views.markers.ProblemsView"
             id="ie.lero.compliance.ui.explanationsView"
             name="Explanations"
             restorable="true">
@@ -127,20 +126,23 @@
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
                id="ie.lero.compliance.ui.menus.complianceMenu"
-               label="Compliance Menu"
+               label="Compliance"
                mnemonic="M">
             <command
                   commandId="ie.lero.compliance.ui.commands.complianceChecking"
+                  icon="icons/checking.gif"
                   id="ie.lero.compliance.ui.menus.complianceChecking"
                   mnemonic="S">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.complianceExplanations"
+                  icon="icons/icon_light_bulb.gif"
                   id="ie.lero.compliance.ui.menus.complianceExplanations"
                   mnemonic="T">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.controlsDerivation"
+                  icon="icons/process.gif"
                   id="ie.lero.compliance.ui.menus.controlsDerivation"
                   mnemonic="U">
             </command>
@@ -155,19 +157,19 @@
                   commandId="ie.lero.compliance.ui.commands.complianceChecking"
                   icon="icons/checking.gif"
                   id="ie.lero.compliance.ui.toolbars.complianceChecking"
-                  tooltip="Say hello world">
+                  tooltip="Check compliance">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.complianceExplanations"
                   icon="icons/icon_light_bulb.gif"
                   id="ie.lero.compliance.ui.toolbars.complianceExplanations"
-                  tooltip="Say hello world">
+                  tooltip="Explain compliance violations">
             </command>
             <command
                   commandId="ie.lero.compliance.ui.commands.controlsDerivation"
                   icon="icons/process.gif"
                   id="ie.lero.compliance.ui.toolbars.controlsDerivation"
-                  tooltip="Say hello world">
+                  tooltip="Derive compliance controls">
             </command>
          </toolbar>
       </menuContribution>
@@ -182,6 +184,58 @@
             id="ie.lero.compliance.ui.editors.ComplianceEditor"
             name="Compliance Editor">
       </editor>
+   </extension>
+   <extension
+         id="ie.lero.compliance.builder"
+         name="Compliance Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true"
+            isConfigurable="true">
+         <run
+               class="ie.lero.compliance.project.ComplianceBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="ie.lero.compliance.nature"
+         name="Compliance nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="ie.lero.compliance.project.ComplianceNature">
+         </run>
+      </runtime>
+      <builder
+            id="ie.lero.compliance.builder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/icon-compliance1.png"
+            id="ie.lero.compliance.ui.compliance"
+            natureId="ie.lero.compliance.nature">
+      </image>
+   </extension>
+   <extension
+         id="ie.lero.wizards.compliance"
+         name="Compliance New Wizard"
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="ie.lero.category.compliance"
+            name="Compliance">
+      </category>
+      <wizard
+            category="ie.lero.category.compliance"
+            class="ie.lero.compliance.project.wizard.NewProjectBasedComplianceWizard"
+            descriptionImage="icons/icon-compliance1.png"
+            finalPerspective="ie.lero.compliance.ui.perspectives.CompliancePerspective"
+            icon="icons/releng_gears.gif"
+            id="org.eclipse.ui.wizards.new.compliance"
+            name="Compliance Project"
+            project="true">
+      </wizard>
    </extension>
 
 </plugin>
