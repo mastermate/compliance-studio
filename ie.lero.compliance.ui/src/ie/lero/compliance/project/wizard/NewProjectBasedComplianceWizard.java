@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResourceStatus;
@@ -236,7 +237,20 @@ public class NewProjectBasedComplianceWizard extends BasicNewResourceWizard impl
 		}
 
 		newProject = newProjectHandle;
-
+		
+		// XXX creating project folders
+		IFolder systemFolder = newProject.getFolder("system");
+		IFolder controlsFolder = newProject.getFolder("controls");
+		IFolder policiesFolder = newProject.getFolder("policies");
+		try {
+			systemFolder.create(false, true, null);
+			controlsFolder.create(false, true, null);
+			policiesFolder.create(false, true, null);
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return newProject;
 	}
 
@@ -286,6 +300,7 @@ public class NewProjectBasedComplianceWizard extends BasicNewResourceWizard impl
 	 * (non-Javadoc) Method declared on IWizard.
 	 */
 	public boolean performFinish() {
+		// TODO create default folders and files in this method
 		createNewProject();
 
 		if (newProject == null) {
@@ -295,6 +310,7 @@ public class NewProjectBasedComplianceWizard extends BasicNewResourceWizard impl
 		IWorkingSet[] workingSets = mainPage.getSelectedWorkingSets();
 		getWorkbench().getWorkingSetManager().addToWorkingSets(newProject, workingSets);
 
+		// TODO update to the compliance perspective
 		updatePerspective();
 		selectAndReveal(newProject);
 

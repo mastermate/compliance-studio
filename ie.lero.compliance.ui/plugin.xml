@@ -17,7 +17,7 @@
       </view>
       <view
             category="ie.lero.compliance.ui"
-            class="ie.lero.compliance.ui.views.EnvironmentView"
+            class="org.eclipse.ui.views.properties.PropertySheet"
             id="ie.lero.compliance.ui.enviromentView"
             name="Environment"
             restorable="true">
@@ -213,7 +213,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/icon-compliance1.png"
+            icon="icons/releng_gears.gif"
             id="ie.lero.compliance.ui.compliance"
             natureId="ie.lero.compliance.nature">
       </image>
@@ -234,6 +234,7 @@
             icon="icons/releng_gears.gif"
             id="org.eclipse.ui.wizards.new.compliance"
             name="Compliance Project"
+            preferredPerspectives="ie.lero.compliance.ui.perspectives.CompliancePerspective"
             project="true">
       </wizard>
    </extension>

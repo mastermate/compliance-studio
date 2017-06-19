@@ -26,16 +26,18 @@ public class EnvironmentView extends ViewPart {
 //		searchLabel.setText("Search: ");
 //		final Text searchText = new Text(parent, SWT.BORDER | SWT.SEARCH);
 //		searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
-		createColumns(parent, viewer);
+		createColumns(parent);
 	}
 
-	private void createColumns(Composite parent, TableViewer viewer2) {
+	private void createColumns(Composite parent) {
 		String[] titles = { "Element", "Value" };
 		int[] bounds = { 100, 100 };
 
 		TableViewerColumn col;
 		for (int i = 0; i < titles.length; i++) {
 			col = createTableViewerColumn(titles[i], bounds[i], i);
+			// XXX trying to add the columns
+			//viewer.add(col);
 		}
 
 	}
